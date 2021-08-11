@@ -34,3 +34,9 @@ Route::get('/roles/{id}', 'RolesController@show')->middleware(['web','auth']);
 Route::get('/profile', 'ProfileController@show')->middleware(['web','auth']);
 Route::get('/profile/edit', 'ProfileController@edit')->middleware(['web','auth']);
 Route::put('/profile', 'ProfileController@update')->middleware(['web','auth']);
+
+
+//send sms
+Route::get('/sms', 'SmsController@sms')->name('sms');
+Route::get('/sms/send', 'SmsController@sendSms')->name('sms.send');
+Route::post('/sms/store', 'SmsController@storeSms')->name('sms.store');
