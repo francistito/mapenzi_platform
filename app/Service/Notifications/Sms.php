@@ -35,7 +35,7 @@ class Sms
         $this->sender = "NEXTSMS";
 
         //add key by ignore word Basic already specified
-        $this->key = "cHVyZXNvZnQ6MTAwJUBwdXJl";
+        $this->key = "Ymxlc3NlZGtvbm86Ymxlc3NlZGtvbm85NA==";
 
         $this->message = $message;
 

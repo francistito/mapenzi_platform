@@ -82,5 +82,12 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+
+
+    @stack('after-scripts')
+
 </body>
 </html>
