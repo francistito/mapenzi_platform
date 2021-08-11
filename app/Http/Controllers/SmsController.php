@@ -26,11 +26,19 @@ class SmsController extends Controller
             'phone_number' => 'required',
             'message' => 'required',
         ]);
+        $phone_number = phone_format($request->phone_number,'TZ');
 
         $sms = new Sms();
-        $sms->phone_number = $request->phone_number;
+        $sms->phone_number = $phone_number;
         $sms->body = $request->message;
         $sms->save();
+
+
+        $phone = str_replace("+", "", $sms->phone_number);
+        $sms_message = $sms->body;
+
+        //dispatch job for calling a service for send sms
+        \App\Jobs\Notifications\SendSms::dispatch($phone, strip_tags($sms_message));
 
         return redirect('/home')->with('msg_success', 'Sms sent Successfully');
 
